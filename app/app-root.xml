@@ -1,0 +1,16 @@
+<RadSideDrawer xmlns:rd="nativescript-ui-sidedrawer">
+    <rd:RadSideDrawer.drawerContent>
+        <StackLayout class="drawer-header">
+            <Label text="Qwen Mobile" class="text-xl font-bold p-4" />
+            <StackLayout class="drawer-content">
+                <Label text="Home" tap="{{ navigateToHome }}" class="drawer-item" />
+                <Label text="History" tap="{{ navigateToHistory }}" class="drawer-item" />
+                <Label text="Settings" tap="{{ navigateToSettings }}" class="drawer-item" />
+            </StackLayout>
+        </StackLayout>
+    </rd:RadSideDrawer.drawerContent>
+    
+    <rd:RadSideDrawer.mainContent>
+        <Frame defaultPage="views/home/home-page" />
+    </rd:RadSideDrawer.mainContent>
+</RadSideDrawer>

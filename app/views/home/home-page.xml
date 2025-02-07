@@ -1,0 +1,30 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Qwen Mobile">
+        <NavigationButton tap="{{ toggleDrawer }}" icon="res://menu" />
+        <ActionItem ios.position="right" android.position="actionBar" 
+                   tap="{{ toggleTheme }}" icon="res://theme" />
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <ListView items="{{ messages }}" row="0" class="chat-list">
+            <ListView.itemTemplate>
+                <StackLayout>
+                    <StackLayout class="{{ type === 'user' ? 'chat-bubble user-message' : 'chat-bubble assistant-message' }}">
+                        <Label text="{{ content }}" textWrap="true" />
+                        <StackLayout orientation="horizontal" visibility="{{ type === 'assistant' ? 'visible' : 'collapsed' }}">
+                            <Button text="🔊" tap="{{ $parent.playAudio }}" class="text-sm" />
+                            <Button text="Share" tap="{{ $parent.shareMessage }}" class="text-sm" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+
+        <GridLayout rows="auto" columns="*, auto, auto" row="1" class="p-2">
+            <TextField col="0" text="{{ userInput }}" hint="Type your message..." 
+                      returnKeyType="send" returnPress="{{ sendMessage }}" />
+            <Button col="1" text="🎤" tap="{{ startVoiceInput }}" class="mx-1" />
+            <Button col="2" text="Send" tap="{{ sendMessage }}" class="-primary" />
+        </GridLayout>
+    </GridLayout>
+</Page>
